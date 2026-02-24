@@ -52,15 +52,23 @@ Crea el directorio si no existe.
 
 ## Uso
 
-1. Ejecuta el script:
+Tras la reorganización el código está dividido en varios módulos dentro del paquete `automatizacion_sri`.
+Puedes ejecutar el programa de tres maneras:
+
+1. ejecutando el paquete directamente desde la raíz del proyecto:
    ```bash
-   python sri_excel.py
+   python -m automatizacion_sri.main
    ```
-2. Sigue las instrucciones en pantalla:
-   - Ingresa tu RUC y clave del SRI.
-   - Elige el tipo de comprobante (Factura o Comprobante de Retención).
-   - Especifica los meses y años a descargar.
-3. Los archivos se descargarán automáticamente en las carpetas `Facturas` o `Retenciones` dentro de tu carpeta de Descargas.
+2. o importando `automatizacion_sri.main.main()` desde otra aplicación.
+3. para compatibilidad aún existe el script original `sri_excel.py` con el código completo.
+
+Sigue las instrucciones en pantalla:
+
+- Ingresa tu RUC y clave del SRI.
+- Elige el tipo de comprobante (Factura o Comprobante de Retención).
+- Especifica los meses y años a descargar.
+
+Los archivos se guardarán en las carpetas `Facturas` o `Retenciones` dentro de tu carpeta de Descargas, y al finalizar se generan los respectivos archivos Excel.
 
 ### Notas de Uso
 
@@ -86,14 +94,20 @@ El proyecto incluye un workflow de n8n (`Automatizado.json`) que procesa los dat
 ## Estructura del Proyecto
 
 ```
-automatizacion_sri/
-├── sri_excel.py          # Script principal de automatización
+LICENSE                  # Licencia MIT del proyecto
+README.md                # Documentación del proyecto
+
+automatizacion_sri/      # Código fuente del paquete
+├── __init__.py
+├── sri_excel.py          # Script principal de automatización (puede convertirse en módulo)
 ├── client_secret.json    # Credenciales OAuth (ignorar en Git)
 ├── token.pickle          # Token OAuth (ignorar en Git)
 ├── Automatizado.json     # Workflow n8n (ignorar en Git)
 ├── chrome_profile/       # Perfil de Chrome (ignorar en Git)
 ├── Application/          # Datos de Chrome (ignorar en Git)
-└── README.md             # Este archivo
+
+tests/                   # Pruebas unitarias y de integración
+└── test_basic.py         # Ejemplo de prueba
 ```
 
 ## Contribuciones

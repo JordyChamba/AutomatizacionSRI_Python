@@ -1,0 +1,13 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Sensitive and generated files
+client_secret.json
+token.pickle
+Automatizado.json
+chrome_profile/
+Application/
+
+# Virtual environments
+venv/
